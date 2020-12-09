@@ -1,0 +1,27 @@
+{
+	"name": "@sheto/node-profile-loader",
+	"version": "1.0.0",
+	"description": "配置文件加载器",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "none"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sheto/node-profile-loader.git"
+	},
+	"keywords": [
+		"node",
+		"profile",
+		"loader"
+	],
+	"author": "sheto",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/sheto/node-profile-loader/issues"
+	},
+	"homepage": "https://github.com/sheto/node-profile-loader#readme"
+}

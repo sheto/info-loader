@@ -43,19 +43,15 @@ function $finish(_profile){
 	return profile;
 }
 
-function $read(_dir){
+module.exports = function $read(_dir){
 	let {resolve} = require("path");
-	let {readFile} = require("fs");
-	return new Promise(_$resolve=>{
-		readFile(resolve(_dir),"utf8",(_err,_data)=>{
-			if(!_err){
-				let profile = _data.match(/\[\w+\](\s\w+=.+){1,}/g).map($rebuild)
-				_$resolve($finish(profile))
-			}
-		})
-	})
+	let {readFileSync} = require("fs");
+	let profile
+	try{
+		profile = readFileSync(resolve(_dir),"utf8")
+	}catch{
+		// 如果没有配置文件
+		profile = ""
+	}
+	return $finish((profile.match(/\[\w+\](\s\w+=.+){1,}/g)||[{}]).map($rebuild))
 }
-
-$read("./project.profile").then(_data=>{
-	console.log(_data)
-})
