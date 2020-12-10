@@ -1,7 +1,10 @@
 const NodeProfileLoader = require("../index");
-// node中使用
-NodeProfileLoader("project.profile").node.name
+const Profile = NodeProfileLoader("project.profile")
+// 打印
+console.log(`node:\r${Profile}`)
 // 使用webpack注入项目
-new webpack.DefinePlugin({
-	"profile": JSON.stringify(NodeProfileLoader("project.profile").webpack)
-})
+if(webpack){
+	new webpack.DefinePlugin({
+		"profile": JSON.stringify(NodeProfileLoader("project.profile").webpack)
+	})
+}
